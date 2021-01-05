@@ -1,0 +1,99 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-iconpicker/css/fontawesome-iconpicker.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/Contenct/css/Sitepro.css" rel="stylesheet" />
+    <script src="~/lib/fontawesome-iconpicker/js/fontawesome-iconpicker.js"></script>
+    <title>@ViewBag.Title</title>
+
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                Home
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">EmplyeeList</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="Home" asp-action="Create"><i class="fas fa-random"></i>Add Employee</a>
+                    </li>
+                   
+                    <li>
+                        <a class="nav-link" asp-controller="Product" asp-action="Index">Product</a>
+                    <li>
+                        <a class="nav-link" asp-controller="AccountType" asp-action="Index">Employee Salary</a>
+                    </li>
+                 
+                    @*@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="false">Manage </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" asp-controller="Administration" asp-action="ListOfUsers">Manage Users</a>
+                            <a class="dropdown-item" asp-controller="Administration" asp-action="ListOfRoles">Manage Roles</a>
+
+
+
+                        </div>
+                    </li>
+                   
+                    @*}*@
+
+                  
+                </ul>
+                <ul class="navbar nav ml-auto">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+
+
+
+                        <li class="nav-item">
+                            <form method="post" asp-controller="Account" asp-action="Logout">
+                                <button type="submit" style="width:auto" class="nav-link btn btn-link py-0">
+                                    Logout @User.Identity.Name
+                                </button>
+                            </form>
+                        </li>
+                    }
+                
+                    else
+                    {
+                    <li><a class="nav-link" asp-controller="Account" asp-action="Register">Register</a></li>
+                    <li><a class="nav-link" asp-controller="Account" asp-action="Login">Login</a></li>
+
+                    }
+                
+
+                </ul>
+            </div>
+        </nav>
+        @RenderBody()
+    </div>
+   
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: true)
+    }
+</body>
+</html>

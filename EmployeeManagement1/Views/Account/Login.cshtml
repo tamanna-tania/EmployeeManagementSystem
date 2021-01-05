@@ -1,0 +1,41 @@
+﻿@model LoginViewModel
+@{
+    ViewBag.Title = "User Registration";
+}
+
+<link href="~/css/login.css" rel="stylesheet" />
+<form method="post" id="form">
+  
+    <div class="sec2">
+        <div class="container">
+            <div class="social">
+              
+                <img src="~/images/unnamed.png" height="80" width="150"/>
+            </div>
+            <div class="content">
+                <h2>Email</h2>
+               
+                <input asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+                <h2>Password</h2>
+              
+                <input asp-for="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            
+                <div class="checkbox">
+                    <label asp-for="RememberMe">
+                        <input asp-for="RememberMe" />
+                        @Html.DisplayNameFor(m => m.RememberMe)
+                    </label>
+                </div>
+           
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="content">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </div>
+</form>

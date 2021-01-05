@@ -1,0 +1,65 @@
+﻿@model EditUserViewModel
+@{
+    ViewBag.Title = "Edit User";
+}
+<h3 class="text-center" style="background-color:aqua">Edit User</h3>
+<div class="container">
+    <div style="background:border-box">
+        <form method="post" asp-controller="Administration" asp-route-id="@Model.Id" asp-action="EditUser"
+              style=" width:auto" class="alert-info" align="center">
+
+
+            <div class="form-group row">
+                <label asp-for="Id" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="Id" disabled class="form-control" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="UserName" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="UserName" class="form-control" placeholder="Name" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" style="width:auto" class="btn btn-outline-dark">Update User</button>
+                    <a asp-action="ListOfUsers" class="btn btn-success" style="width:auto">Cancel</a>
+                </div>
+            </div>
+
+            @*<div class="card">
+                <div class="card-header">
+                    <h3>All users</h3>
+                </div>
+                <div class="card-body">
+                    @if (Model.Roles.Any())
+                    {
+                        foreach (var user in Model.Roles)
+                        {
+                            <h5 class="card-title">@user</h5>
+                        }
+                    }
+                    else
+                    {
+                        <h3>No User found at this moment</h3>
+                    }
+
+                </div>
+                <div class="card-footer">
+                    <a asp-controller="Administration" asp-route-id="@Model.Id" asp-action="EditUsers"
+                       class="btn btn-primary" style="width:auto">Add or Remove User</a>
+
+
+                </div>
+            </div>*@
+        </form>
+    </div>
+</div>

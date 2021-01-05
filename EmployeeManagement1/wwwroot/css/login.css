@@ -1,0 +1,85 @@
+﻿body {
+    margin:0;
+    padding:0;
+
+
+}
+#form {
+    align-items:center;
+}
+section {
+    width: 100vw;
+    height: 100vh;
+   
+    background-image: url('file:///F:\Tania\Mvc\perfectEmployeeManagement1\EmployeeManagement1\wwwroot\images\dba33f44-09c3-4f7a-82be-5eec34d9835a_Cool-Wallpaper-Android.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sec2 {
+    position: relative;
+    left: 0;
+    right:0;
+    bottom: 0;
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .sec2.container {
+    
+    width:45vw;
+    height:45vh;
+    }
+    .sec2.social {
+        width: 3.5vw;
+        height:7vh;
+    }
+.content.h2 {
+    font-family:'Segpe UI',Verdana, Geneva, Tahoma, sans-serif;
+    padding-left:7vw;
+}
+
+.content1{
+    font-family: 'Segpe UI',Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 7vw;
+}
+.content1 input {
+    font-family: 'Segpe UI',Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 7vw;
+}
+.content input[type-text] {
+    height:30px;
+    border:0;
+    margin-top:2.5vh;
+    margin-left:4vw;
+    border-radius:20px;
+
+}
+.content input[type-submit] {
+    color: white;
+    margin-top: 2.5vh;
+    margin-left: 4vw;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    border-radius: 6px;
+    border:1px solid;
+    background-color:black;
+}
+.content input[placeholder] {
+    font-family: 'Trebuchet MS','Lucida Sans Unicode','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+
+      padding-left:1vw;
+      font-size:13px;
+
+}
+.container {
+    justify-content: center;
+    align-items: center;
+    align-content:center
+}
+

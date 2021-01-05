@@ -1,0 +1,78 @@
+﻿@model PaginatedList<Account>
+@{
+    ViewBag.Title = "Salary";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Employee Salary</h1>
+        <div>
+            <a asp-controller="AccountType" asp-action="Create" class="btn btn-info" style="width:auto">Add Salary</a>
+        </div>
+        <form asp-action="Index" method="get">
+            <div>
+                <p>
+                    Find By Name<input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-primary" style="width:auto">Back to full list</a>
+                </p>
+            </div>
+        </form>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]"
+                           asp-route-currentFilter="@ViewData["CurrentFilter"]">Employee Name</a>
+                    </th>
+                    <th>Account Number</th>
+                    <th>Salary</th>
+
+                    <th>Account Type</th>
+                    <th>Image</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.EmployeeName</td>
+                            <td>@item.AccountNumber</td>
+                            <td>@item.Salary</td>
+                            @*<td>@item.UrlImage</td>*@
+                            <td>@item.Type.TypeName</td>
+                            <td><img src="~/images/@item.UrlImage" width="70" height="70" /></td>
+
+                            <td>
+                                <a asp-controller="AccountType" asp-action="Edit" asp-route-id="@item.Id"
+                                   class="btn btn-primary m-1">Edit</a>
+                            </td>
+                            <td>
+                                <a asp-controller="AccountType" asp-action="Delete" asp-route-id="@item.Id"
+                                   class="btn btn-danger m-1"
+                                   onclick="return confirm('Are you sure to delete this record?')">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        @{
+            var PrevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var NextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex-1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-primary @PrevDisabled"><<<</a>
+
+
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex+1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-primary @NextDisabled">>>></a>
+    </div>
+
+</div>

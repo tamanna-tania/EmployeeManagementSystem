@@ -1,0 +1,42 @@
+﻿@model Account
+@{
+    ViewBag.Title = "Edit Account";
+}
+<div class="row">
+    <div class="col-md-8">
+        <h2>Product Edit</h2>
+        <form asp-controller="AccountType" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label>Name</label>
+                <input asp-for="EmployeeName" class="form-control" />
+                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Account Number</label>
+                <input asp-for="AccountNumber" class="form-control" />
+                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Salary</label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Account Type</label>
+                <select asp-for="TypeId" asp-items="@ViewBag.ListType" class="form-control">
+                    <option value="">Select Category</option>
+                </select>
+                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" asp-for="UrlImage" class="form-control" />
+                <span asp-validation-for="UrlImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update " class="btn btn-primary" style="width:auto" />
+            </div>
+        </form>
+    </div>
+</div>

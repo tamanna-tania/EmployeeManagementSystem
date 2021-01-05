@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employee List";
+}
+
+
+
+
+<h1>Employee List</h1>
+<div class="card-deck">
+    @foreach (var item in Model)
+    {
+
+        @*<partial name="_EmployeeDetails" model="item" />*@
+        var photoPath = "~/images/" + (item.PhotoPath ?? "images (1).jpg");
+
+        <div class="card m-3" style="min-width:18rem; max-width:30%">
+            <div class="card-header">
+                <h3>@item.Name</h3>
+            </div>
+
+
+            <img class="card-img-top imageThumbail" src="@photoPath" asp-append-version="true" />
+
+
+            <div class="card-footer text-center">
+                <form asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id" method="post">
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">View</a>
+                    <a asp-controller="Home" asp-action="Update" asp-route-id="@item.Id" class="btn btn-info"><i class="fas fa-random"></i>Edit</a>
+
+                    <span id="deleteSpan_@item.Id">
+                        <a href="#" class="btn btn-danger" onclick="confirmDelete('@item.Id',true)">Delete</a>
+                    </span>
+                    <span id="confirmDeleteSpan_@item.Id" style="display:none">
+                        <span>
+                            <br />Are you sure to delete this record?
+                        </span>
+                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <a href="#" class="btn btn-primary" onclick="confirmDelete('@item.Id',false)">No</a>
+                    </span>
+
+                </form>
+            </div>
+        </div>
+        @*@Html.Partial("_PartialDetails", Model)*@
+
+    }
+
+
+
+</div>
+
+@section Scripts{
+    <script src="~/js/CustomScript.js"></script>
+}
+  
+
